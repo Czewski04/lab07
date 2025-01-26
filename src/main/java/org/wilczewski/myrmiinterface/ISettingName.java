@@ -5,4 +5,5 @@ import java.rmi.RemoteException;
 
 public interface ISettingName extends Remote {
     void setName(String name) throws RemoteException;
+    String getName() throws RemoteException;
 }

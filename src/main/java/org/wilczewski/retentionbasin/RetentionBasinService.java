@@ -109,4 +109,9 @@ public class RetentionBasinService extends UnicastRemoteObject implements IReten
     public void setName(String name) throws RemoteException {
         this.name = name;
     }
+
+    @Override
+    public String getName() throws RemoteException {
+        return name;
+    }
 }

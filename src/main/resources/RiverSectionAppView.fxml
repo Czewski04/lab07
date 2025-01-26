@@ -11,7 +11,7 @@
    <children>
       <Button fx:id="configurationButton" layoutX="900.0" layoutY="129.0" mnemonicParsing="false" onAction="#setNetworkConfig" text="Set configuration" />
       <TextField fx:id="riverDelayTxtField" layoutX="692.0" layoutY="129.0" promptText="river delay" />
-      <Button layoutX="783.0" layoutY="630.0" mnemonicParsing="false" onAction="#startWorking" prefHeight="65.0" prefWidth="223.0" text="Start working">
+      <Button fx:id="startWorkingButton" layoutX="783.0" layoutY="630.0" mnemonicParsing="false" onAction="#startWorking" prefHeight="65.0" prefWidth="223.0" text="Start working">
          <font>
             <Font size="19.0" />
          </font>

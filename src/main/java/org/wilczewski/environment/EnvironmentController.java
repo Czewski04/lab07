@@ -16,6 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class EnvironmentController {
     @FXML
     public VBox riversVbox;
+    @FXML
+    public Button startWorkingButton;
 
     private EnvironmentService environmentService;
 
@@ -26,6 +28,7 @@ public class EnvironmentController {
     @FXML
     public void startWorking(ActionEvent actionEvent) throws IOException, InterruptedException {
         environmentService.run();
+        startWorkingButton.setDisable(true);
     }
 
     public void showRivers(ConcurrentHashMap<String, IRiverSection> riverSectionsMap) {

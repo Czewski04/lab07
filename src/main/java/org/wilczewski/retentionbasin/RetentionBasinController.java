@@ -21,6 +21,8 @@ public class RetentionBasinController {
     public Label inflowTxtLabel;
     @FXML
     public Label fillingPercentageTxtLabel;
+    @FXML
+    public Button startWorkingButton;
 
     RetentionBasinService retentionBasinService;
 
@@ -54,6 +56,7 @@ public class RetentionBasinController {
     @FXML
     private void startWorking(ActionEvent actionEvent) throws IOException, InterruptedException {
         retentionBasinService.run();
+        startWorkingButton.setDisable(true);
     }
 
     public void updateVolume(double fillPercentage) {

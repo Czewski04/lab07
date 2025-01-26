@@ -1,6 +1,13 @@
 package org.wilczewski.tailor;
 
 import interfaces.*;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import org.wilczewski.controlcenter.ControlCenterController;
+import org.wilczewski.controlcenter.ControlCenterService;
 import org.wilczewski.myrmiinterface.ISettingName;
 
 import java.rmi.Remote;
@@ -8,9 +15,9 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.HashMap;
+import java.util.*;
 
-public class TailorApp implements ITailor {
+public class TailorApp extends Application implements ITailor {
     IControlCenter controlCenter;
     IEnvironment environment;
     HashMap<String, IRetensionBasin> retensionBasinStringHashMap = new HashMap<>();
@@ -37,9 +44,6 @@ public class TailorApp implements ITailor {
             controlCenter = (IControlCenter)remote;
         }
 
-        if(retensionBasinStringHashMap.size() >=2 && riverSectionStringHashMap.size() >=3){
-            connect();
-        }
         return true;
     }
 
@@ -48,14 +52,23 @@ public class TailorApp implements ITailor {
         return false;
     }
 
-    private void connect() throws RemoteException {
+    public void connect() throws RemoteException {
         riverSectionStringHashMap.get("RiverSection1").assignRetensionBasin(retensionBasinStringHashMap.get("RetentionBasin1"), "RetentionBasin1");
         retensionBasinStringHashMap.get("RetentionBasin1").assignRiverSection(riverSectionStringHashMap.get("RiverSection2"), "RiverSection2");
         riverSectionStringHashMap.get("RiverSection2").assignRetensionBasin(retensionBasinStringHashMap.get("RetentionBasin2"), "RetentionBasin2");
         riverSectionStringHashMap.get("RiverSection3").assignRetensionBasin(retensionBasinStringHashMap.get("RetentionBasin2"), "RetentionBasin2");
     }
 
+
     public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/TailorAppView.fxml"));
+        Parent root = loader.load();
+
         TailorApp tailorApp = new TailorApp();
         try{
             ITailor iTailor = (ITailor) UnicastRemoteObject.exportObject(tailorApp, 0);
@@ -64,5 +77,12 @@ public class TailorApp implements ITailor {
         }catch(RemoteException e){
             e.printStackTrace();
         }
+
+        TailorController controller = loader.getController();
+        controller.setTailorApp(tailorApp);
+
+        stage.setTitle("Tailor");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

@@ -21,6 +21,8 @@ public class RiverSectionController {
     public Label rainfallTxtLabel;
     @FXML
     public Label inflowWaterTxtLabel;
+    @FXML
+    public Button startWorkingButton;
 
 
     RiverSectionService riverSectionService;
@@ -50,6 +52,7 @@ public class RiverSectionController {
     @FXML
     private void startWorking(ActionEvent actionEvent) throws IOException, InterruptedException {
         riverSectionService.run();
+        startWorkingButton.setDisable(true);
     }
 
     public void showRainfall(int rainfall) {

@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="760.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.wilczewski.controlcenter.ControlCenterController">
    <children>
-      <Button layoutX="834.0" layoutY="642.0" mnemonicParsing="false" onAction="#startWorking" prefHeight="65.0" prefWidth="223.0" text="Start working">
+      <Button fx:id="startWorkingButton"  layoutX="834.0" layoutY="642.0" mnemonicParsing="false" onAction="#startWorking" prefHeight="65.0" prefWidth="223.0" text="Start working">
          <font>
             <Font size="19.0" />
          </font>

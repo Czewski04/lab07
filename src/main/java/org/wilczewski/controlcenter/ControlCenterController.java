@@ -15,6 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ControlCenterController {
     @FXML
     public VBox basinsVbox;
+    @FXML
+    public Button startWorkingButton;
 
     private ControlCenterService controlCenterService;
 
@@ -25,6 +27,7 @@ public class ControlCenterController {
     @FXML
     public void startWorking(ActionEvent actionEvent) throws IOException, InterruptedException {
         controlCenterService.run();
+        startWorkingButton.setDisable(true);
     }
 
     public void showBasins(ConcurrentHashMap<String, RetentionBasinMapItem> retentionBasinsMap) {

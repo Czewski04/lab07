@@ -94,4 +94,9 @@ public class RiverSectionService extends UnicastRemoteObject implements IRiverSe
     public void setName(String name) throws RemoteException {
         this.name = name;
     }
+
+    @Override
+    public String getName() throws RemoteException {
+        return this.name;
+    }
 }
