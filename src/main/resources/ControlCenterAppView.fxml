@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="760.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.wilczewski.controlcenter.ControlCenterController">
+   <children>
+      <Button layoutX="834.0" layoutY="642.0" mnemonicParsing="false" onAction="#startWorking" prefHeight="65.0" prefWidth="223.0" text="Start working">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <VBox fx:id="basinsVbox" layoutX="21.0" layoutY="136.0" prefHeight="572.0" prefWidth="628.0" />
+   </children>
+</AnchorPane>
